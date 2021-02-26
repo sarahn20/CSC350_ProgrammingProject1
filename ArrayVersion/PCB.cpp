@@ -45,6 +45,30 @@ int PCB::getLastSibling()
     
 }
 
+void PCB::display()
+{
+    std::cout<<"parent: "<<this->index<<" children: ";
+    if(this->first_child == -1)
+    {
+        std::cout<<"NO CHILDREN\n";
+    }
+    else if(this->first_child != -1)
+    {
+        std::cout<<first_child;
+        if(pcbs[this->first_child]->younger_sibling != -1)
+        {
+            int youngest_sibling = pcbs[this->first_child]->younger_sibling;
+            std::cout<<youngest_sibling;
+            while(pcbs[youngest_sibling]->younger_sibling != -1)
+            {
+                youngest_sibling = pcbs[youngest_sibling]->younger_sibling;
+                std::cout<<youngest_sibling;
+            }
+            
+        }
+        std::cout<<"\n";
+    }
+}
 
 PCB* PCB::create()
 {
@@ -64,6 +88,7 @@ PCB* PCB::create()
         q->older_sibling = youngest_sibling;
         pcbs[youngest_sibling]->younger_sibling = q->index;
     }
+    this->display();
     return q;
 }
 
@@ -89,6 +114,5 @@ void PCB::destroy()
             pcbs[holder] = 0;
         } 
     } 
+    this->display();
 }
-
-
