@@ -18,5 +18,6 @@ public:
     int getEnd();
     int removeEnd();
     int getCount();
+    void display();
 };
 #endif /* LinkedList_hpp */
