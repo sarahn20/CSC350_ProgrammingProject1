@@ -15,5 +15,6 @@ public:
     PCB* create();
     void destroy();
     int getLastSibling();
+    void display();
 };
 #endif /* PCB_hpp */
