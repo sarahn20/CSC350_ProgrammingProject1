@@ -22,6 +22,8 @@ PCB* PCB::create()
 {
     PCB* q = new PCB(this->index);
     this->children->addEnd(q->index);
+    std::cout<<"parent: "<<this->index<<" children: ";
+    this->children->display();
     return q;
 }
 
@@ -40,5 +42,6 @@ void PCB::destroy()
         }
         
     }
-    
+    std::cout<<"parent: "<<this->index<<" children: ";
+    this->children->display();
 }
