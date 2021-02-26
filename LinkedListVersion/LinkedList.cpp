@@ -28,7 +28,6 @@ void LinkedList::addFront(int payload)
     this->count++;
 }
 
-
 int LinkedList::getFront()
 {
     return this->head->getPayload();
@@ -72,12 +71,14 @@ void LinkedList::addEnd(int payload)
        this->count++;
    }
 }
+
 int LinkedList::getEnd()
 {
     Node* currNode = this->runToEndOfList();
     //currNode points to the end of the list
     return currNode->getPayload();
 }
+
 int LinkedList::removeEnd()
 {
     //we are assuming the list has at least one element in it for now
@@ -103,4 +104,22 @@ int LinkedList::removeEnd()
         return valueToReturn;
     }
     
+}
+
+void LinkedList::display()
+{
+    Node* currNode = this->head;
+    if(this->count == 0)
+    {
+         std::cout << "NO CHILDREN";
+    }
+    else
+    {
+        for(int i = 0; i < this->count; i++)
+        {
+            std::cout << currNode->getPayload()<<"";
+            currNode = currNode->getNextNode();
+        }
+    }
+    std::cout << "\n";
 }
